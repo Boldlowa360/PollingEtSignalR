@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import * as signalR from "@microsoft/signalr"
 import { UselessTask } from '../models/UselessTask';
 
@@ -21,7 +21,9 @@ export class SignalrComponent implements OnInit {
 
   connecttohub() {
     // TODO On doit commencer par créer la connexion vers le Hub
-
+      this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl("https://localhost:7289/api")
+      .build();
     // TODO On peut commencer à écouter pour les évènements qui vont déclencher des callbacks
 
     // TODO On doit ensuite se connecter
